@@ -1,0 +1,30 @@
+<div id="configuration_state">Delay: {{ delay }}ms; Sample size: {{ sample_size }}</div>
+
+
+<div id="fab-dismiss" *ngIf="fabTogglerState==='active'" (click)="onToggleFab()">
+</div>
+
+<div class="fab-container">
+    <button mat-fab class="fab-toggler" (click)="onToggleFab()">
+        <i class="material-icons" [@fabToggler]="{value: fabTogglerState}">menu</i>
+    </button>
+    <div *ngIf="fabOpen" [@speedDialStagger]>
+        <button mat-mini-fab class="fab-secondary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" color="secondary">
+            <i class="material-icons">more_vert</i>
+        </button>
+        <mat-menu #menu="matMenu" yPosition="above" color="secondary">
+            <button mat-menu-item routerLink="/bouble-sort">
+                Buble-sort
+            </button>
+        </mat-menu>
+        <button mat-mini-fab class="fab-secondary" color="secondary" (click)="decreaseDelay()">
+            <i class="material-icons">remove</i>
+        </button>
+        <button mat-mini-fab class="fab-secondary" color="secondary" (click)="increaseDelay()">
+            <i class="material-icons">add</i>
+        </button>
+        <button mat-mini-fab class="fab-secondary" color="secondary" (click)="increaseDelay()">
+            <i routerLink="/" class="material-icons">home</i>
+        </button>
+    </div>
+</div>
